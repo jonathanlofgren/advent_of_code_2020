@@ -1,0 +1,8 @@
+[package]
+name = "advent_of_code"
+version = "0.2.0"
+authors = ["Jonathan Lofgren <jonathan.lofgren@quantumblack.com>"]
+edition = "2018"
+
+[dependencies]
+regex = "1"
