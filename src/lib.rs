@@ -1,5 +1,6 @@
 mod utils;
 extern crate regex;
+pub mod day_5;
 pub mod day_4;
 pub mod day_3;
 pub mod day_2;
