@@ -15,11 +15,12 @@ fn count_all_questions(text: &str) -> Vec<usize> {
         .map(
             |x| {
                 let sets: Vec<HashSet<_>> = x.split("\n").map(|s| s.chars().collect()).collect();
-                let set0 = &sets[0];
+                let set0 = sets[0].clone();
 
-                set0.iter().filter(
-                    |k| sets.iter().all(|s| s.contains(k))
-                ).count()
+                sets[1..]
+                    .iter()
+                    .fold(set0, |l, r| l.intersection(r).cloned().collect::<HashSet<_>>())
+                    .len()
             }
         )
         .collect()
