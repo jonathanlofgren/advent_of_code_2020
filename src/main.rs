@@ -5,4 +5,5 @@ fn main() {
     advent_of_code::day_3::main();
     advent_of_code::day_4::main();
     advent_of_code::day_5::main();
+    advent_of_code::day_6::main();
 }
