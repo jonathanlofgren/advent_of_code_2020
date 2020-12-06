@@ -5,28 +5,24 @@ use std::collections::HashSet;
 fn count_any_question(text: &str) -> Vec<usize> {
     text
         .split("\n\n")
-        .map(|s| s.replace("\n", "").chars().collect::<HashSet<_>>())
-        .map(|s| s.len())
+        .map(|s| s.replace("\n", "").chars().collect::<HashSet<_>>().len())
         .collect()
 }
 
 fn count_all_questions(text: &str) -> Vec<usize> {
-    let all_sets: Vec<Vec<HashSet<_>>> = text
+    text
         .split("\n\n")
         .map(
-            |s| s.split("\n").map(|s| s.chars().collect()).collect()
+            |x| {
+                let sets: Vec<HashSet<_>> = x.split("\n").map(|s| s.chars().collect()).collect();
+                let set0 = &sets[0];
+
+                set0.iter().filter(
+                    |k| sets.iter().all(|s| s.contains(k))
+                ).count()
+            }
         )
-        .collect();
-
-    all_sets.iter().map(
-        |sets| {
-            let set0 = &sets[0];
-
-            set0.iter().filter(
-                |k| sets.iter().all(|s| s.contains(k))
-            ).count()
-        }
-    ).collect()
+        .collect()
 }
 
 pub fn main() {
