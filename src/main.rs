@@ -8,4 +8,6 @@ fn main() {
     advent_of_code::day_6::main();
     advent_of_code::day_7::main();
     advent_of_code::day_8::main();
+    advent_of_code::day_9::main();
+    advent_of_code::day_10::main();
 }
